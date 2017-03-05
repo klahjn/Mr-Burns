@@ -26,6 +26,7 @@ Public Class Form1
         My.Settings.Save()
     End Sub
     Private Sub Form1_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        NotifyIcon1.Visible = False
         My.Settings.Save()
     End Sub
 
@@ -35,18 +36,14 @@ Public Class Form1
         Dim startInfo As New ProcessStartInfo
         startInfo.FileName = Application.StartupPath + "\tools\mk.exe"
         startInfo.Arguments = " " + Chr(34) + My.Settings.Oldpath.ToString + Chr(34) + " " + Chr(34) + "C:\ISOs\temp.iso" + Chr(34)
-        Process.Start(startInfo)
-    End Sub
-
-    Private Sub NumericUpDown1_ValueChanged(sender As Object, e As EventArgs) Handles NumericUpDown1.ValueChanged
-        My.Settings.Copies = NumericUpDown1.Value.ToString
-        My.Settings.Save()
-    End Sub
-
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        Dim startInfo As New ProcessStartInfo
+        Dim process As Process = Process.Start(startInfo)
+        process.WaitForExit()
         startInfo.FileName = My.Settings.ImgburnLoc.ToString
         startInfo.Arguments = " /MODE WRITE /SRC C:\ISOs\temp.iso /DEST " + My.Settings.Newpath.ToString + " /START /COPIES " + My.Settings.Copies.ToString + " /DELETEIMAGE " + My.Settings.DeleteISO.ToString
         Process.Start(startInfo)
+    End Sub
+    Private Sub NumericUpDown1_ValueChanged(sender As Object, e As EventArgs) Handles NumericUpDown1.ValueChanged
+        My.Settings.Copies = NumericUpDown1.Value.ToString
+        My.Settings.Save()
     End Sub
 End Class

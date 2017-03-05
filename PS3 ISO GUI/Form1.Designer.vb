@@ -22,6 +22,8 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
@@ -30,7 +32,7 @@ Partial Class Form1
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.NotifyIcon1 = New System.Windows.Forms.NotifyIcon(Me.components)
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -70,7 +72,7 @@ Partial Class Form1
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(48, 25)
         Me.Button2.TabIndex = 4
-        Me.Button2.Text = "Convert"
+        Me.Button2.Text = "Burn"
         Me.Button2.UseVisualStyleBackColor = True
         '
         'CheckBox1
@@ -102,23 +104,18 @@ Partial Class Form1
         Me.Label2.TabIndex = 7
         Me.Label2.Text = "Copies:"
         '
-        'Button3
+        'NotifyIcon1
         '
-        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.Button3.Location = New System.Drawing.Point(228, 11)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(37, 25)
-        Me.Button3.TabIndex = 8
-        Me.Button3.Text = "Burn"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.NotifyIcon1.Icon = CType(resources.GetObject("NotifyIcon1.Icon"), System.Drawing.Icon)
+        Me.NotifyIcon1.Text = "Mr Burns"
+        Me.NotifyIcon1.Visible = True
         '
         'Form1
         '
         Me.AllowDrop = True
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(267, 77)
-        Me.Controls.Add(Me.Button3)
+        Me.ClientSize = New System.Drawing.Size(229, 77)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.NumericUpDown1)
         Me.Controls.Add(Me.CheckBox1)
@@ -127,9 +124,11 @@ Partial Class Form1
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.ComboBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "Form1"
+        Me.Opacity = 0.85R
         Me.Text = "Mr. Burns"
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -145,5 +144,5 @@ Partial Class Form1
     Friend WithEvents CheckBox1 As CheckBox
     Friend WithEvents NumericUpDown1 As NumericUpDown
     Friend WithEvents Label2 As Label
-    Friend WithEvents Button3 As Button
+    Friend WithEvents NotifyIcon1 As NotifyIcon
 End Class
